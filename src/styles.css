@@ -1,0 +1,42 @@
+:root {
+    --blue: #1c41d8;
+    --gold2: #847c37;
+}
+
+.App {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+
+
+.buttonBetaOption {
+    flex-direction: column;
+    display: flex;
+    background-color: white; 
+    border: 1px solid var(--blue);
+    color: var(--blue);
+    padding: 1vw 1vw;
+    width: 9vw;
+    text-align: center;
+    text-decoration: none;
+    opacity: 1;
+    transition: 0.3s;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 2vw;
+    font-family: futura std;
+    font-size: 1.3vw;
+    margin-bottom: 7vh;
+}
+
+.buttonBetaOption:hover {
+    border: 1px solid white;
+    background-color: var(--blue);
+    color: white;
+}
