@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import ReactGA from 'react-ga';
+import PlanCard from './PlanCard'
+import plans from './Plans'
 
 import '../sass/Home.scss';
 
@@ -23,7 +25,22 @@ export const Event = (category, action, label) => {
 };
 
 class Home extends Component {
+    constructor(){
+        super();
+        this.state = {
+            plans: plans
+        }
+    }
     render() {
+        const planCards = this.state.plans.map(plan => (
+            <PlanCard
+                key={plan.id}
+                link={plan.link}
+                name={plan.name}
+                onTrack={plan.onTrack}
+                date={plan.date}
+            />
+        ));
         return (
             <div className="Home">
                 <div className="top">
@@ -46,39 +63,7 @@ class Home extends Component {
                 </div>
                 <div className="planRow">
                     <div className="planContainer">
-                        <Link to={'/planone'} style={{ textDecoration: 'none' }}
-                              onClick={() => {
-                                  Event("PLANONE", "Clicked to Plan One page", "PLANONE_PAGE")
-                              }}>
-                            <div className="plan">
-                                <p className="planName"> COMP + SOPA in 4 Years </p>
-                                <div>
-                                    <p className="planStatusTrue"> On Track </p>
-                                    <p className="planDate"> Last edited on April 26, 2019 </p>
-                                </div>
-                            </div>
-                        </Link>
-                        <div className="plan">
-                                <p className="planName"> Yeet to the Beat </p>
-                                <div>
-                                    <p className="planStatusFalse"> Outdated </p>
-                                    <p className="planDate"> Last edited on December 25, 2018 </p>
-                                </div>
-                        </div>
-                        <div className="plan">
-                            <p className="planName"> Dope Skillz 24 </p>
-                            <div>
-                                <p className="planStatusFalse"> Outdated </p>
-                                <p className="planDate"> Last edited on April 26, 2018 </p>
-                            </div>
-                        </div>
-                        <div className="plan">
-                            <p className="planName"> COMP + ELEC with Korean Classes </p>
-                            <div>
-                                <p className="planStatusFalse"> Outdated </p>
-                                <p className="planDate"> Last edited on January 17, 2018 </p>
-                            </div>
-                        </div>
+                        {planCards}
                     </div>
                 </div>
             </div>

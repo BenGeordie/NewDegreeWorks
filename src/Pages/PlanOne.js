@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import '../sass/PlanOne.scss';
 
 import ScrollIntoView from 'react-scroll-into-view'
+import {Link} from "react-router-dom";
+import {Event} from "./Home";
 
 const isMobile = window.innerWidth <= 600;
 
@@ -11,9 +13,14 @@ class PlanOne extends Component {
     render() {
         return (
             <div className="Home">
-                <div className="top">
-                    <p> New <br/> Degree <br/> Works </p>
-                </div>
+                <Link to={'/'} style={{ textDecoration: 'none' }}
+                      onClick={() => {
+                          Event("HOME", "Clicked to Home Page", "HOME_PAGE")
+                      }}>
+                    <div className="topPlanOne">
+                        <p> New <br/> Degree <br/> Works </p>
+                    </div>
+                </Link>
                 <div className="newPlanRow">
                     <p className="yourPlans"> Your Plans </p>
                     <div className="newPlanButtonWrap">

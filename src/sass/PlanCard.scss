@@ -1,0 +1,55 @@
+:root {
+  --gold: #b5ab50;
+  --gold2: #847c37;
+}
+$gold: #b5ab50;
+$chosenFont: Futura;
+
+.plan {
+  height: 20vw;
+  width: 20vw;
+  background-color: black;
+  border-radius: 20px;
+  color: white;
+  padding: 0.5vw 1.5vw;
+  margin: 1vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+
+@function validityColor($validity) {
+  @if $validity == True {
+    @return #86FFA1
+  } @else {
+    @return #FF5353
+  }
+}
+
+
+.planName {
+  font-size: 2vw;
+  font-family: $chosenFont;
+}
+
+
+.planStatusTrue {
+  font-size: 1vw;
+  font-family: $chosenFont;
+  color: validityColor(True)
+}
+
+
+.planStatusFalse {
+  font-size: 1vw;
+  font-family: $chosenFont;
+  color: validityColor(False)
+}
+
+
+.planDate {
+  font-size: 1vw;
+  font-family: $chosenFont;
+}
