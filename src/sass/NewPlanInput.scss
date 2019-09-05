@@ -56,7 +56,7 @@ $non_hover_color: #b1b1b1;
   cursor: pointer;
   text-align: left;
   padding-top: 20px;
-  padding-bottom: 5px;
+  padding-bottom: 15px;
   transition: 0.3s;
   &.major {
     width: 400px;
@@ -210,20 +210,27 @@ $non_hover_color: #b1b1b1;
   justify-content: flex-end;
 }
 
+.grad_by {
+  display: flex;
+  flex-direction: row;
+}
+
 .grad_year {
   width: 130px;
   background-color: transparent;
   font-size: $dropdown_display_font_size;
   border: transparent;
   border-bottom: 1px solid $non_hover_color;
-  color: white;
+  color: $non_hover_color;
   font-family: $chosen_font;
   transition: 0.3s;
   padding-left: 8px;
+  margin-left: 10px;
 }
 
 .grad_year:hover {
   border-bottom: 1px solid white;
+  color: white;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */

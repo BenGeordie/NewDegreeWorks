@@ -47,7 +47,7 @@ class Home extends Component {
                     <p> New <br/> Degree <br/> Works </p>
                 </div>
                 <div className="newPlanRow">
-                    <p className="yourPlans"> Your Plans </p>
+                    <p className="yourPlans"> <b> Your Plans </b> </p>
                     <div className="newPlanButtonWrap">
                         <Link to={'/newplaninput'} style={{ textDecoration: 'none', color: 'black'}} className="blank">
                             <a style={{display: "table-cell", textDecoration: "none"}} target="_blank">

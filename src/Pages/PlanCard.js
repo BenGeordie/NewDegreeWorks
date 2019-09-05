@@ -11,9 +11,9 @@ class PlanCard extends React.Component {
                       Event("PLANONE", "Clicked to Plan One page", "PLANONE_PAGE")
                   }}>
                 <div className="plan">
-                    <p className="planName"> {this.props.name} </p>
+                    <p className="planName"> <b>{this.props.name}</b> </p>
                     <div>
-                        <p className={this.props.onTrack? "planStatusTrue" : "planStatusFalse"}> {this.props.onTrack? "On Track" : "Outdated"} </p>
+                        <p className={this.props.onTrack? "planStatusTrue" : "planStatusFalse"}> <b>{this.props.onTrack? "On Track" : "Outdated"} </b></p>
                         <p className="planDate"> Last edited on {this.props.date} </p>
                     </div>
                 </div>

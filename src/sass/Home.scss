@@ -3,8 +3,8 @@
   --gold2: #847c37;
 }
 $gold: #b5ab50;
-$chosenFont: Futura;
-
+$chosenFont: Avenir;
+$logoFont: Futura;
 
 .Home {
   background-color: white;
@@ -25,7 +25,7 @@ $chosenFont: Futura;
   flex-direction: column;
   align-items: flex-start;
   padding-left: 3vw;
-  font-family: $chosenFont;
+  font-family: $logoFont;
   font-size: 3vw;
   width: 100vw;
   margin-bottom: -3vw;

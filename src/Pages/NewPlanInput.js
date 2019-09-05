@@ -15,11 +15,13 @@ class NewPlanInput extends React.Component{
         this.state = {
             majorNumber: [0],
             selectedMajors: [0],
-            selectedSemester: null
+            selectedSemester: null,
+            gradYear: null
         };
         this.handleClick = this.handleClick.bind(this)
         this.submitDegree = this.submitDegree.bind(this)
         this.submitSemester = this.submitSemester.bind(this)
+        this.handleChangeGradYear = this.handleChangeGradYear(this)
     }
 
     handleClick(){
@@ -42,6 +44,11 @@ class NewPlanInput extends React.Component{
         console.log(this.state)
     }
 
+    handleChangeGradYear(){
+        /*this.setState({gradYear: e.target.value})*/
+        console.log("hello")
+    }
+
     render(){
         const degrees = this.state.majorNumber.map(majorNumber => (<SelectDegree majorNumber={majorNumber} submitDegree={this.submitDegree}/>));
         var today = new Date();
@@ -59,10 +66,12 @@ class NewPlanInput extends React.Component{
                         <div className="add_degree_wrapping">
                             <button className="add_degree" onClick={this.handleClick}>+ Degree / Major</button>
                         </div>
-                        <SelectSemester submitSemester={this.submitSemester}/>
-                        <form>
-                            <input className="grad_year" type="text" name="gradYear" placeholder="Year"/>
-                        </form>
+                        <div className="grad_by">
+                            <SelectSemester submitSemester={this.submitSemester}/>
+                            <input className="grad_year" type="text" name="gradYear" placeholder="Year" autoComplete="off" />
+                            {/*<form onSubmit={(e) => (e.preventDefault())}>*/}
+                            {/*</form>*/}
+                        </div>
                         <a className="submit_button">
                             Start
                         </a>
