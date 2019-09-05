@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import DndTest from './Dnd/DndTest/index';
+import DndTest from './Dnd/Plan/index';
 import Home from './Pages/Home.js'
 import NewPlanInput from './Pages/NewPlanInput.js'
 import './App.scss';
@@ -20,9 +20,9 @@ export default class App extends React.Component{
         return(
             <div>
                 <Home style="margin: 0;"/>
-                <Container>
-                    <DndTest/>
-                </Container>
+                {/*<Container>*/}
+                    {/*<DndTest/>*/}
+                {/*</Container>*/}
             </div>
         );
     }

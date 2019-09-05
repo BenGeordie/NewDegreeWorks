@@ -1,6 +1,6 @@
 function addCreditBlock(emptyPlan, semesterNum) {
     var creditBlock = [];
-    // var n;
+    var n;
     for (n = 0; n < semesterNum; n ++){
         creditBlock.push(0);
     }
@@ -15,7 +15,7 @@ function addCreditBlock(emptyPlan, semesterNum) {
 
 function addWorkloadBlock(emptyPlan, semesterNum){
     var workloadBlock = [];
-    // var n;
+    var n;
     for (n = 0; n < semesterNum; n++){
         workloadBlock.push(0);
     }
@@ -41,7 +41,7 @@ function labelSemesters(emptyPlan, semesterNum, startSem, startYear){
         throw new Error("emptyPlan array is not long enough. Perhaps it is generated with semesterNum less " +
             "than the semesterNum argument passed to labelSemesters, or credit and workload blocks aren't added properly")
     }
-    // var n;
+    var n;
     for (n = 0; n < semesterNum; n++) {
         if (n === 0){
             emptyPlan[n].push([startSem, startYear]);
@@ -65,7 +65,7 @@ function labelSemesters(emptyPlan, semesterNum, startSem, startYear){
 // // console.log(emptyPlan2);
 // // The next test case intentionally causes error and is intentionally commented out more.
 // // // console.log("ERROR TESTCASE: labelSemester, emptyPlan3, intentional error")
-// // var emptyPlan3 = [];
+// var emptyPlan3 = [];
 // // labelSemesters(emptyPlan3, 5, "Spring",2018);
 // // // console.log(emptyPlan3);
 // // Dependent
@@ -84,7 +84,7 @@ function generateEmptyPlan(semesterNum, startSem, startYear){
 	information blocks.
      */
     var emptyPlan = [];
-    // var n;
+    var n;
     for (n = 0; n < semesterNum; n++){
         emptyPlan.push([]);
     }
@@ -182,7 +182,7 @@ function wrongSemester(chosenCourse, coursesDetails, semester, plan){
     // console.log("semester", semester)
     // // console.log("plan", plan)
     // console.log("semester", plan[semester][0][0]);
-    // console.log("offered", coursesDetails[chosenCourse][2]);
+    // console.log("offered", toBeScheduled[chosenCourse][2]);
     if (coursesDetails[chosenCourse][2] .indexOf(plan[semester][0][0]) === -1){
         return true;
     }
@@ -200,8 +200,8 @@ function prereqAfterOrWithCourse(chosenCourse, coursesDetails, semester, plan, s
 	of the chosen course is scheduled after or at the same time as the chosen course,
 	and False otherwise.
      */
-    // // console.log("prereqs", coursesDetails[chosenCourse][1])
-    // var prereqIndex, semesterAfterOrWithCourse;
+    // // console.log("prereqs", toBeScheduled[chosenCourse][1])
+    var prereqIndex, semesterAfterOrWithCourse;
     for (prereqIndex = 0; prereqIndex < coursesDetails[chosenCourse][1].length; prereqIndex++){
         for (semesterAfterOrWithCourse = semester; semesterAfterOrWithCourse < semesterNum; semesterAfterOrWithCourse++){
             if (plan[semesterAfterOrWithCourse] .indexOf(coursesDetails[chosenCourse][1][prereqIndex]) != -1){
@@ -212,7 +212,7 @@ function prereqAfterOrWithCourse(chosenCourse, coursesDetails, semester, plan, s
             }
         }
     }
-    // var semesterBeforeCourse;
+    var semesterBeforeCourse;
     for (semesterBeforeCourse = 0; semesterBeforeCourse < (semester + 1); semesterBeforeCourse++){
         for (var course in plan[semesterBeforeCourse]){
             if (course in coursesDetails){
@@ -303,10 +303,9 @@ function sort(courses, coursesDetails, plan, semesterNum, preferredCreditLimit, 
     }
     return allPlans;
 }
-//
-// var coursesDetails1 = {"MATH 211/212": [3, [], "Fall and Spring", 3.26],
-//     "STAT 315": [4, ["MATH 102"], "Fall and Spring", 4],
-//     "COMP 215": [4, ["COMP 182"], "Fall", 4.12],
+
+
+// var courses_details2 = {"ARCH 225": [3, [], "Fall", 2.53],
 //     "COMP 310": [4, ["COMP 215"], "Fall and Spring", 3.85],
 //     "COMP 321": [4, ["ELEC 220", "COMP 215"], "Spring", 4.19],
 //     "COMP 322": [4, ["COMP 215"], "Spring", 3.09],
@@ -331,115 +330,31 @@ function sort(courses, coursesDetails, plan, semesterNum, preferredCreditLimit, 
 //     "LPAP 100": [1, [], "Fall and Spring", 1.36],
 //
 //     "CHIN 211": [3, [], "Fall", 2.4],
-//     "ARCH 225": [3, [], "Fall", 2.53],
+//     "CHIN 212": [3, ["CHIN 211"], "Spring", 3.33],
+//     "BUSI 464": [3, [], "Spring", 2.86]}
+// // "CHIN 212": [3, ["CHIN 211"], "Spring", 3.33],
+// // "BUSI 464": [3, [], "Spring", 2.86],
 //
-//     "MATH 354": [3, [], "Fall and Spring", 3.81],
-//
-//     "BUSI 469": [3, [], "Spring", 3.2]};
-//
-//
-// // console.log("test time", coursesDetails1["MATH 211/212"][2]);
-// var courses1 = Object.keys(coursesDetails1).slice();
-// // console.log("course num:", courses1.length)
-// var semesterNum1 = 5;
-// var startSem1 = "Fall";
-// var startYear1 = 2019;
-// var preferredCreditLimit1 = 18;
-// var difficultyLevel1 = 17;
-// var planNum1 = 1;
-// var plan1 = generateEmptyPlan(semesterNum1, startSem1, startYear1);
-// // console.log("plan1", plan1)
-// var plan1WithPriority = [[('Fall', 2019)], [('Spring', 2020)], [('Fall', 2020)], [('Spring', 2021)], [('Fall', 2021)], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]];
-// var possibleDegreePlans = sort(courses1, coursesDetails1, plan1, semesterNum1, preferredCreditLimit1, difficultyLevel1,  planNum1);
-// // console.log("POSSIBLE DEGREE PLAN:");
-// // console.log();
-// // console.log()
-// // console.log("--------------------------------------------")
-// // console.log(possibleDegreePlans)
-// function printif(a) {
-//     var b = false
-//     if (a > 0){
-//         b = true
-// //         console.log(b)
-// //         console.log("yo")
-//     }
-// //     console.log(b)
-// //     console.log("hey")
-//     if (b){
-// //         console.log("yas")
-//     }
-// }
-// // printif(-2)
-//
-// var yo = [2, 15]
-// var ya = yo.slice()
-// yo.push(30)
-// ya.push(25)
-// // console.log("ya", ya)
-// var yaya = ya.shift()
-// yo.pop()
-// // console.log("yo", yo)
-// // console.log("ya", ya)
-// // console.log("yaya", yaya)
-// yo = yo.concat(ya);
-// // console.log(yo)
-// var ye = [[[[2019]]]]
-// // console.log("ye", ye)
-// // console.log(ye[0][0])
-//
-// var cou2 = courses1.slice()
-// cou2.shift()
-// // console.log(cou2)
-// // console.log(courses1)
-
-var courses_details2 = {"ARCH 225": [3, [], "Fall", 2.53],
-    "COMP 310": [4, ["COMP 215"], "Fall and Spring", 3.85],
-    "COMP 321": [4, ["ELEC 220", "COMP 215"], "Spring", 4.19],
-    "COMP 322": [4, ["COMP 215"], "Spring", 3.09],
-    "COMP 382": [4, ["COMP 182"], "Fall", 4.12],
-    "COMP 412": [4, ["COMP 321", "COMP 215"], "Fall", 3.59],
-    "COMP 421": [4, ["COMP 215", "COMP 321"], "Spring", 4.6],
-    "COMP 420": [4, ["COMP 421"], "Fall", 3.15],
-    "COMP 440": [4, ["COMP 310", "STAT 315", "MATH 354"], "Fall", 4.22],
-
-    "ECON 200": [4, ["ECON 100", "MATH 102"], "Fall and Spring", 3],
-    "ECON 203": [3, ["ECON 200"], "Fall and Spring", 2.22],
-    "ECON 209": [4, ["ECON 100", "STAT 315"], "Fall and Spring", 2.96],
-    "ECON 300": [3, ["ECON 200", "STAT 315"], "Fall and Spring", 2.82],
-
-    "ECON 210": [3, ["ECON 100"], "Fall and Spring", 1.8],
-    "ECON 422": [3, ["ECON 200", "ECON 203"], "Fall and Spring", 2.56],
-    "ECON 445": [3, ["ECON 200"], "Fall", 2.79],
-    "ECON 450": [3, ["ECON 200", "ECON 203"], "Fall", 3.04],
-    "ECON 462": [4, ["ECON 200", "ECON 209"], "Fall", 4.5],
-    "ECON 470": [3, ["ECON 200", "STAT 315"], "Fall", 3.11],
-
-    "LPAP 100": [1, [], "Fall and Spring", 1.36],
-
-    "CHIN 211": [3, [], "Fall", 2.4],
-    "CHIN 212": [3, ["CHIN 211"], "Spring", 3.33],
-    "BUSI 464": [3, [], "Spring", 2.86]}
-// "CHIN 212": [3, ["CHIN 211"], "Spring", 3.33],
-// "BUSI 464": [3, [], "Spring", 2.86],
-
-var courses2 = Object.keys(courses_details2)
-var semester_num1 = 6
-var start_sem1 = "Fall"
-var start_year1 = 2019
-var preferred_credit_limit1 = 18
-var difficulty_level1 = 17
-var plan_num1 = 2
+// var courses2 = Object.keys(courses_details2)
+// var semester_num1 = 6
+// var start_sem1 = "Fall"
+// var start_year1 = 2019
+// var preferred_credit_limit1 = 18
+// var difficulty_level1 = 17
+// var plan_num1 = 2
 // var plan1 = generate_empty_plan(semester_num1, start_sem1, start_year1)
-// // // console.log(plan1)
-var plan2_with_priority = [[['Fall', 2019], "COMP 215", "STAT 315", "COMP 390", "BUSI 469"], [['Spring', 2020], "MATH 211/212", "PSYC 203"], [['Fall', 2020]], [['Spring', 2021]], [['Fall', 2021]], [['Spring', 2022]], [14, 6, 0, 0, 0, 0], [12, 7, 0, 0, 0, 0]]
-var possible_degree_plans = sort(courses2, courses_details2, plan2_with_priority, semester_num1, preferred_credit_limit1, difficulty_level1,  plan_num1)
+// // // // console.log(plan1)
+// var plan2_with_priority = [[['Fall', 2019], "COMP 215", "STAT 315", "COMP 390", "BUSI 469"], [['Spring', 2020], "MATH 211/212", "PSYC 203"], [['Fall', 2020]], [['Spring', 2021]], [['Fall', 2021]], [['Spring', 2022]], [14, 6, 0, 0, 0, 0], [12, 7, 0, 0, 0, 0]]
+// var possible_degree_plans = sort(courses2, courses_details2, plan2_with_priority, semester_num1, preferred_credit_limit1, difficulty_level1,  plan_num1)
+//
+// console.log("POSSIBLE DEGREE PLAN:")
+// console.log()
+// console.log()
+// console.log("--------------------------------------------")
+// possible_degree_plans.forEach((degree_plan) => (console.log(degree_plan)))
+// console.log("--------------------------------------------")
+// console.log("number of plans:", possible_degree_plans.length)
 
-console.log("POSSIBLE DEGREE PLAN:")
-console.log()
-console.log()
-console.log("--------------------------------------------")
-possible_degree_plans.forEach((degree_plan) => (console.log(degree_plan)))
-console.log("--------------------------------------------")
-console.log("number of plans:", possible_degree_plans.length)
+export default sort;
 
 

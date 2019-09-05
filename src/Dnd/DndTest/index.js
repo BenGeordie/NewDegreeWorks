@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import '../../sass/Home.scss'
 import Draggable from '../Draggable';
 import Droppable from '../Droppable';
+import {Link} from "react-router-dom";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -26,18 +28,25 @@ const droppableStyle = {
     borderRadius: '20px'
 };
 
-export default class DndTest extends React.Component {
+export default class Plan extends React.Component {
     render(){
         return(
-            <Wrapper>
-                <Droppable id="dr1" style={droppableStyle}>
-                    <Draggable id ="item1" style={{margin: '8pxer'}}><Item>Children</Item></Draggable>
-                    <Draggable id ="item2" style={{margin: '8px'}}><Item>Some text</Item></Draggable>
-                </Droppable>
-                <Droppable id="dr2" style={droppableStyle}>
+            <div className="Home">
+                <div className="top">
+                    <Link to={'/'} style={{ textDecoration: 'none', color: 'black'}} className="blank">
+                        <p> New <br/> Degree <br/> Works </p>
+                    </Link>
+                </div>
+                <Wrapper>
+                    <Droppable id="dr1" style={droppableStyle}>
+                        <Draggable id ="item1" style={{margin: '8px'}}><Item>Children</Item></Draggable>
+                        <Draggable id ="item2" style={{margin: '8px'}}><Item>Some text</Item></Draggable>
+                    </Droppable>
+                    <Droppable id="dr2" style={droppableStyle}>
 
-                </Droppable>
-            </Wrapper>
+                    </Droppable>
+                </Wrapper>
+            </div>
         );
     }
 }

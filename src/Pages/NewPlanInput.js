@@ -4,6 +4,12 @@ import React from 'react'
 import './../sass/NewPlanInput.scss'
 import '../sass/Home.scss';
 
+// import function
+import sort from './Sort'
+
+// import data
+import toBeScheduled from './toBeScheduled'
+
 // import components
 import SelectDegree from './SelectDegree'
 import SelectSemester from './SelectSemester'
@@ -16,15 +22,18 @@ class NewPlanInput extends React.Component{
             majorNumber: [0],
             selectedMajors: [0],
             selectedSemester: null,
-            gradYear: null
+            gradYear: null,
+            toBeScheduled: toBeScheduled[0],
+            scheduled: null
         };
-        this.handleClick = this.handleClick.bind(this)
-        this.submitDegree = this.submitDegree.bind(this)
-        this.submitSemester = this.submitSemester.bind(this)
-        this.handleChangeGradYear = this.handleChangeGradYear(this)
+        this.handleClickAddDegree = this.handleClickAddDegree.bind(this);
+        this.submitDegree = this.submitDegree.bind(this);
+        this.submitSemester = this.submitSemester.bind(this);
+        this.handleChangeGradYear = this.handleChangeGradYear(this);
+        this.handleClickSubmit = this.handleClickSubmit(this);
     }
 
-    handleClick(){
+    handleClickAddDegree(){
         this.setState(prevState => ({
             majorNumber: prevState.majorNumber.concat(prevState.majorNumber.length),
             selectedMajors: prevState.selectedMajors.concat(0)
@@ -49,6 +58,22 @@ class NewPlanInput extends React.Component{
         console.log("hello")
     }
 
+    handleClickSubmit(){
+        console.log("Clicked the submit button");
+        if(this.state.selectedSemester != null) {
+            const courses = Object.keys(this.state.toBeScheduled.coursesDetails);
+            const allPlans = sort(courses,
+                this.state.toBeScheduled.coursesDetails,
+                this.state.selectedSemester, //DO NOTICE THAT THIS IS ONLY TEMPORARY. SELECTEDSEMESTER IS END SEMESTER WHILE SORT TAKES IN START SEMESTER
+                this.state.toBeScheduled.semesterNum,
+                this.state.toBeScheduled.preferredCreditLimit,
+                this.state.toBeScheduled.difficultyLevel,
+                this.state.toBeScheduled.planNum);
+            this.state.scheduled = allPlans;
+            console.log(this.state.scheduled);
+        }
+    }
+
     render(){
         const degrees = this.state.majorNumber.map(majorNumber => (<SelectDegree majorNumber={majorNumber} submitDegree={this.submitDegree}/>));
         var today = new Date();
@@ -64,7 +89,7 @@ class NewPlanInput extends React.Component{
                     <div className="input">
                         {degrees}
                         <div className="add_degree_wrapping">
-                            <button className="add_degree" onClick={this.handleClick}>+ Degree / Major</button>
+                            <button className="add_degree" onClick={this.handleClickAddDegree}>+ Degree / Major</button>
                         </div>
                         <div className="grad_by">
                             <SelectSemester submitSemester={this.submitSemester}/>
@@ -72,9 +97,9 @@ class NewPlanInput extends React.Component{
                             {/*<form onSubmit={(e) => (e.preventDefault())}>*/}
                             {/*</form>*/}
                         </div>
-                        <a className="submit_button">
+                        <button className="submit_button" onClick={this.handleClickSubmit}>
                             Start
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
