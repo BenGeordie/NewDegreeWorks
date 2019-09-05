@@ -9,6 +9,7 @@ $chosenFont: Avenir;
   height: 20vw;
   width: 20vw;
   background-color: black;
+  border: 0 solid black;
   border-radius: 20px;
   color: white;
   padding: 0.5vw 1.5vw;
@@ -16,7 +17,12 @@ $chosenFont: Avenir;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: 0.3s;
 
+}
+
+.plan:hover {
+  border: 10px solid black;
 }
 
 

@@ -20,9 +20,9 @@ export default class App extends React.Component{
         return(
             <div>
                 <Home style="margin: 0;"/>
-                {/*<Container>*/}
-                    {/*<DndTest/>*/}
-                {/*</Container>*/}
+                <Container>
+                    <DndTest/>
+                </Container>
             </div>
         );
     }

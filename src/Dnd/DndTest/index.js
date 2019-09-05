@@ -31,7 +31,7 @@ export default class DndTest extends React.Component {
         return(
             <Wrapper>
                 <Droppable id="dr1" style={droppableStyle}>
-                    <Draggable id ="item1" style={{margin: '8px'}}><Item>Some text</Item></Draggable>
+                    <Draggable id ="item1" style={{margin: '8pxer'}}><Item>Children</Item></Draggable>
                     <Draggable id ="item2" style={{margin: '8px'}}><Item>Some text</Item></Draggable>
                 </Droppable>
                 <Droppable id="dr2" style={droppableStyle}>

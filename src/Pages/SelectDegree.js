@@ -65,8 +65,8 @@ class SelectDegree extends React.Component{
             return(
                 <div className="dropdown_wrapping" onMouseLeave={this.handleMouseLeaveDegreeDropdown}>
                     <div className="dropdown">
-                        <button className="dropbtn degree" onClick={this.handleClickDegreeDropdown}>
-                            <div className="dropbtn_title degree">{this.state.chosenDegree}</div>
+                        <button className="drop_button degree" onClick={this.handleClickDegreeDropdown}>
+                            <div className="drop_button_title degree">{this.state.chosenDegree}</div>
                             <a className="triangle_down"/>
                         </button>
                         <div className="dropdown_content degree" style={this.state.showDegreeDropdown? {display: "block"}: {display: "none"}}>
@@ -86,8 +86,8 @@ class SelectDegree extends React.Component{
             <div>
                 <div className="dropdown_wrapping" onMouseLeave={this.handleMouseLeaveMajorDropdown}>
                     <div className="dropdown">
-                        <button className="dropbtn major" onClick={this.handleClickMajorDropdown}>
-                            <div className="dropbtn_title major">{this.state.chosenMajor}</div>
+                        <button className="drop_button major" onClick={this.handleClickMajorDropdown}>
+                            <div className="drop_button_title major">{this.state.chosenMajor}</div>
                             <a className="triangle_down"/>
                         </button>
                         <div className="dropdown_content major" style={this.state.showMajorDropdown? {display: "block"}: {display: "none"}}>

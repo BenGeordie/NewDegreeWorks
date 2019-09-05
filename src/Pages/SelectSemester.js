@@ -38,8 +38,8 @@ class SelectSemester extends React.Component{
             <div>
                 <div className="dropdown_wrapping" onMouseLeave={this.handleMouseLeaveSemesterDropdown}>
                     <div className="dropdown">
-                        <button className="dropbtn semester" onClick={this.handleClickSemesterDropdown}>
-                            <div className="dropbtn_title semester">{this.state.chosenSemester}</div>
+                        <button className="drop_button semester" onClick={this.handleClickSemesterDropdown}>
+                            <div className="drop_button_title semester">{this.state.chosenSemester}</div>
                             <a className="triangle_down"/>
                         </button>
                         <div className="dropdown_content semester" style={this.state.showSemesterDropdown? {display: "block"}: {display: "none"}}>
