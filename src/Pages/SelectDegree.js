@@ -15,7 +15,7 @@ class SelectDegree extends React.Component{
             chosenDegree: "Degree",
             showMajorDropdown: false,
             showDegreeDropdown: false,
-            majorData: majorData
+            majorData: majorData,
         };
         this.handleClickMajor = this.handleClickMajor.bind(this)
         this.handleClickMajorDropdown = this.handleClickMajorDropdown.bind(this)
@@ -44,6 +44,7 @@ class SelectDegree extends React.Component{
 
     handleClickDegree(degree){
         this.setState({chosenDegree: degree, showDegreeDropdown: false})
+        this.props.submitDegree(this.props.majorNumber, this.state.chosenMajorId, this.state.chosenMajor, degree)
     }
 
     handleClickDegreeDropdown(){

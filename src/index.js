@@ -4,6 +4,7 @@ import App from './App.js';
 import './index.scss';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import PlanOne from './Pages/PlanOne.js'
+import NewPlanInput from './Pages/NewPlanInput'
 
 import * as serviceWorker from './serviceWorker';
 
@@ -11,6 +12,7 @@ const routing = (
     <Router>
         <div>
             <Route exact path="/" component={App} />
+            <Route exact path="/newplaninput" component={NewPlanInput} />
             <Route path="/planone" component={PlanOne} />
         </div>
     </Router>

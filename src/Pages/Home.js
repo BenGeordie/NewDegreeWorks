@@ -49,16 +49,18 @@ class Home extends Component {
                 <div className="newPlanRow">
                     <p className="yourPlans"> Your Plans </p>
                     <div className="newPlanButtonWrap">
-                        <a style={{display: "table-cell", textDecoration: "none"}} href="https://danny235320.typeform.com/to/iJ2NhH" target="_blank">
-                            <div className = "addButtonText">
-                                New Plan
-                            </div>
-                        </a>
-                        <a style={{display: "table-cell", textDecoration: "none"}} href="https://danny235320.typeform.com/to/iJ2NhH" target="_blank">
-                            <div className = "addButtonPlus">
-                                +
-                            </div>
-                        </a>
+                        <Link to={'/newplaninput'} style={{ textDecoration: 'none', color: 'black'}} className="blank">
+                            <a style={{display: "table-cell", textDecoration: "none"}} target="_blank">
+                                <div className = "addButtonText">
+                                    New Plan
+                                </div>
+                            </a>
+                            <a style={{display: "table-cell", textDecoration: "none"}} target="_blank">
+                                <div className = "addButtonPlus">
+                                    +
+                                </div>
+                            </a>
+                        </Link>
                     </div>
                 </div>
                 <div className="planRow">

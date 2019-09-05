@@ -1,10 +1,38 @@
-$chosenFont: Futura;
+$chosen_font: Avenir;
+$dropdown_display_font_size: 25px;
+$non_hover_color: #b1b1b1;
+
+.input_wrapping {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.submit_button {
+  font-family: $chosen_font;
+  font-size: 30px;
+  background-color: transparent;
+  border-radius: 5px;
+  width: 370px;
+  padding: 15px;
+  color: $non_hover_color;
+  border: 1px solid $non_hover_color;
+  text-align: center;
+  margin-top: 40px;
+  transition: 0.3s;
+}
+
+.submit_button:hover {
+  color: white;
+  border: 1px solid white;
+}
+
 .input {
-  font-family: $chosenFont;
+  font-family: $chosen_font;
   background-color: black;
-  border-radius: 20px;
+  border-radius:20px;
   width: 400px;
-  padding: 20px;
+  padding: 40px;
   margin: 20px;
   display: flex;
   flex-direction: column;
@@ -17,14 +45,14 @@ $chosenFont: Futura;
 }
 
 .dropbtn {
-  font-family: $chosenFont;
+  font-family: $chosen_font;
   display: flex;
   flex-direction: row;
-  background-color: black;
-  color: #a1a1a1;
-  font-size: 25px;
+  background-color: transparent;
+  color: $non_hover_color;
+  font-size: $dropdown_display_font_size;
   border: none;
-  border-bottom: 1px solid #a1a1a1;
+  border-bottom: 1px solid $non_hover_color;
   cursor: pointer;
   text-align: left;
   padding-top: 20px;
@@ -36,6 +64,9 @@ $chosenFont: Futura;
   &.degree {
     width: 120px;
   }
+  &.semester {
+    width: 250px;
+  }
 }
 
 .dropbtn_title {
@@ -44,6 +75,9 @@ $chosenFont: Futura;
   }
   &.degree {
     width: 110px;
+  }
+  &.semester{
+    width: 240px;
   }
 }
 
@@ -63,6 +97,9 @@ $chosenFont: Futura;
   }
   &.degree {
     width: 120px;
+  }
+  &.semester {
+    width: 250px;
   }
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -99,7 +136,7 @@ $chosenFont: Futura;
 }
 
 .add_degree {
-  color: #a1a1a1;
+  color: $non_hover_color;
   width: 130px;
   font-size: 15px;
   border: none;
@@ -108,7 +145,7 @@ $chosenFont: Futura;
   padding-top: 20px;
   padding-bottom: 5px;
   transition: 0.3s;
-  background-color: black;
+  background-color: transparent;
 }
 
 .add_degree:hover {
@@ -148,7 +185,7 @@ $chosenFont: Futura;
   margin-top: 12px;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 10px solid #a1a1a1;
+  border-top: 10px solid $non_hover_color;
   transition: 0.3s;
 }
 
@@ -173,3 +210,31 @@ $chosenFont: Futura;
   justify-content: flex-end;
 }
 
+.grad_year {
+  width: 130px;
+  background-color: transparent;
+  font-size: $dropdown_display_font_size;
+  border: transparent;
+  border-bottom: 1px solid $non_hover_color;
+  color: white;
+  font-family: $chosen_font;
+  transition: 0.3s;
+  padding-left: 8px;
+}
+
+.grad_year:hover {
+  border-bottom: 1px solid white;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $non_hover_color;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $non_hover_color;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: $non_hover_color;
+}
