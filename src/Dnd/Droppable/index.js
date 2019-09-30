@@ -16,6 +16,7 @@ export default class Droppable extends React.Component{
   render(){
     return (
       <div id={this.props.id} onDrop={this.drop} onDragOver={this.allowDrop} style ={this.props.style}>
+        <item style={{padding: '8px', fontSize: '20px', textAlign: 'center'}}><b>{this.props.title}</b></item>
         {this.props.children}
       </div>
     );

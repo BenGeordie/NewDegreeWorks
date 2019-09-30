@@ -8,7 +8,7 @@ $non_hover_color: #b1b1b1;
   width: 100vw;
 }
 
-.submit_button {
+.start_button {
   font-family: $chosen_font;
   font-size: 30px;
   background-color: transparent;
@@ -22,9 +22,10 @@ $non_hover_color: #b1b1b1;
   transition: 0.3s;
 }
 
-.submit_button:hover {
+.start_button:hover {
   color: white;
   border: 1px solid white;
+  cursor: pointer;
 }
 
 .input {

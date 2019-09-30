@@ -24,13 +24,14 @@ class NewPlanInput extends React.Component{
             selectedSemester: null,
             gradYear: null,
             toBeScheduled: toBeScheduled[0],
-            scheduled: null
+            scheduled: null,
+            toggle: false
         };
         this.handleClickAddDegree = this.handleClickAddDegree.bind(this);
         this.submitDegree = this.submitDegree.bind(this);
         this.submitSemester = this.submitSemester.bind(this);
         this.handleChangeGradYear = this.handleChangeGradYear(this);
-        this.handleClickSubmit = this.handleClickSubmit(this);
+        this.handleClickStart = this.handleClickStart(this);
     }
 
     handleClickAddDegree(){
@@ -58,8 +59,10 @@ class NewPlanInput extends React.Component{
         console.log("hello")
     }
 
-    handleClickSubmit(){
+    handleClickStart(){
         console.log("Clicked the submit button");
+        this.setState((prevState) => ({toggle: !prevState.toggle}));
+        console.log(this.state.toggle);
         if(this.state.selectedSemester != null) {
             const courses = Object.keys(this.state.toBeScheduled.coursesDetails);
             const allPlans = sort(courses,
@@ -97,7 +100,7 @@ class NewPlanInput extends React.Component{
                             {/*<form onSubmit={(e) => (e.preventDefault())}>*/}
                             {/*</form>*/}
                         </div>
-                        <button className="submit_button" onClick={this.handleClickSubmit}>
+                        <button className="start_button" onClick={this.handleClickStart}>
                             Start
                         </button>
                     </div>
